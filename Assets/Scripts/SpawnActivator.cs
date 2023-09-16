@@ -1,20 +1,20 @@
 using System.Collections;
 using UnityEngine;
 
-public class SpawnManager : MonoBehaviour
+public class SpawnActivator : MonoBehaviour
 {
     [SerializeField] private float _delay;
     [SerializeField] private int _countEnemy;
 
-    private Spawn[] _spawnPoints;
+    private Spawner[] _spawnPoints;
 
     private void Start()
     {
-        _spawnPoints = new Spawn[transform.childCount];
+        _spawnPoints = new Spawner[transform.childCount];
 
         for (int i = 0; i < _spawnPoints.Length; i++)
         {
-            _spawnPoints[i] = transform.GetChild(i).GetComponent<Spawn>();
+            _spawnPoints[i] = transform.GetChild(i).GetComponent<Spawner>();
         }
 
         StartCoroutine(SpawnEnemy());
